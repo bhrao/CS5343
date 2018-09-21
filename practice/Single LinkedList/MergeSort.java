@@ -17,7 +17,7 @@ class LinkedList_Details {
 				LinkedList_Details(int len, Node n) { this.len = len; this.n = n;}
 			}
 
-class ReverseLinkedList {
+class MergeSort {
 
 			//main method
 			public static void main(String args[]) {							
@@ -26,7 +26,13 @@ class ReverseLinkedList {
 									
 					System.out.print("\nValues in the list are : ");
 					
-					traverseList(ld.n);														
+					traverseList(ld.n);					
+
+					Node h = mergeSort(ld.n);
+
+					System.out.print("\nValues in the list after sorting are : ");
+					
+					traverseList(h);									
 					
 			}
 
@@ -68,7 +74,7 @@ class ReverseLinkedList {
 	
 										if(rd_val == 0) {										
 													Random rand = new Random(); 
-													v = rand.nextInt(1000);
+													v = rand.nextInt(100*len);
 												}
 
 										else {
@@ -93,18 +99,62 @@ class ReverseLinkedList {
 					return ld;
 			}
 
-
-
 			//method to traverse a linkedlist
 
 			public static void traverseList(Node n) {
 
-					if(n == null) System.out.println("End of List");
-					
-					else { System.out.print(n.val + " "); traverseList(n.next);}
-
+					do {
+						System.out.print(n.val + " ");
+						if(n.next == null) System.out.println("End of list");						
+						n = n.next;
+					} while(n != null);						
 			}
-			
+
+			public static Node mergeSort(Node n) {
+
+					Node a = n;
+					Node b = findMid(n, n);
+
+					if(n.next == null) return n;
+
+					else {
+						splitList(a, b); 
+						a = mergeSort(a);
+						b = mergeSort(b);					
+						Node h = mergeList(a, a, b, b, 0); 
+						return h;
+					}	
+		
+			}
+
+			public static Node findMid(Node n, Node m) {
+
+					if(m == null || m.next == null) return n;
+					else return findMid(n.next, m.next.next);
+			}
+
+			public static void splitList(Node a, Node b) {
+
+					if(a.next == b) a.next = null;
+					else splitList(a.next, b);
+			}
+
+			public static Node mergeList(Node h, Node a, Node b, Node c, int i) {
+
+					if(a == null) { c.next = b; return h; }
+
+					else if(b == null) { c.next = a; return h; }
+
+					else if(i == 0) {
+								if(a.val >= b.val) { h = b; c = b; return mergeList(h, a, b.next, c, ++i); }
+								else { c = a; return mergeList(h, a.next, b, c, ++i); }
+					}
+
+					else {
+						if(a.val >= b.val) { c.next = b; c = b; return  mergeList(h, a, b.next, c, i); }
+						else { c.next = a; c = a; return mergeList(h, a.next, b, c, i); }
+					}				
+			}
 
 }
 
