@@ -95,10 +95,12 @@ class LeafCount {
 			
 			public static void insertNode(Node r, int v) {
 
+					if(r.val == v) System.out.println("\nNode value " + v + " repeated. Discarding duplicate values ");
+
 					Random rand = new Random();
 					int dir = rand.nextInt(2);
 
-					if(dir == 0) {
+					else if(dir == 0) {
 							if(r.left == null) { r.left = new Node(v); r.left.parent = r; }
 							else insertNode(r.left, v);																				
 					}
