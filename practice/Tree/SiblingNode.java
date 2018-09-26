@@ -14,20 +14,30 @@ class Node {
 
 	}
 
-class LeafCount {
+class SiblingNode {
 
 			//main method
 			public static void main(String args[]) {							
 					
 					Node r = createTree();
 
-					System.out.print("Nodes in the tree are : " + preorderTraverse(r);
+					System.out.print("\nNodes in the tree are : ");
+					preorderTraverse(r);
+
+					System.out.print("\nInput a node value to find sibling for : ");
+
+					Scanner sc1 = new Scanner(System.in);
+					int v = sc1.nextInt();
 
 					System.out.print("\nSibling Node value of given Node value " + v + " is " );
 
-					Node n = siblingNode(r, v)
+					Node n = siblingNode(r, r, v);
 
-					if(n == null) Sytem.out.println("Given Node value is root which does not have any sibling");
+					if(r.val == v) System.out.println("Given Node value is root which does not have any sibling");
+
+					else if(n.left == null) System.out.println("Given node does not have a sibling");
+
+					else if(n.right == null) System.out.println("Given node does not have a sibling");
 
 					else if(n.left.val == v) System.out.println(n.right.val);
 
@@ -105,10 +115,10 @@ class LeafCount {
 			
 			public static void insertNode(Node r, int v) {
 
-					if(r.val == v) System.out.println("\nNode value " + v + " repeated. Discarding duplicate values ");
-
 					Random rand = new Random();
 					int dir = rand.nextInt(2);
+
+					if(r.val == v) { System.out.println("\nNode value " + v + " repeated. Discarding duplicate values "); }					
 
 					else if(dir == 0) {
 								if(r.left == null) { r.left = new Node(v); r.left.parent = r; }
@@ -140,14 +150,17 @@ class LeafCount {
 					}				
 			}
 
-			public static Node siblingNode(Node r, int v) {
+			public static Node siblingNode(Node r, Node n, int v) {
 
 					if(r == null) return null;
 
 					else if(r.val == v) return r.parent;
 
-					else { siblingNode(r.left); siblingNode(r.right); }
-
+					else {
+						n = siblingNode(r.left, n, v);
+						if(n == null) { return siblingNode(r.right, n, v); }
+						return n;
+					}
 			}
 				
 }
