@@ -107,43 +107,7 @@ class AVLTree {
 											r.right.parent = r;											
 											updateHeight(r.right);
 											t = checkBalance(r);
-											if(t != null && t == mR) {
-													if((t.right == null && t.left.right == null) 
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
-													else if((t.right == null && t.left.left == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t);
-													else if((t.left == null && t.right.left == null) 
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
-													else if((t.left == null && t.right.right == null) 
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-													else System.out.println(" not in any rotation \n");
-																									
-													return mR.parent;													
-											}
-
-											else if(t != null && t != mR) {
-													if((t.right == null && t.left.right == null) 
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t); 
-													else if((t.right == null && t.left.left == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t);
-													else if((t.left == null && t.right.left == null) 
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
-													else if((t.left == null && t.right.right == null) 
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-													else System.out.println(" not in any rotation \n");
-																										
-													return mR; 
-											}
-
-											else return mR;
+											return rebalance(t, mR);
  								}
 								else return insertNode(r.right, mR, t, v);
 					}
@@ -154,43 +118,7 @@ class AVLTree {
 									r.left.parent = r;
 									updateHeight(r.left);								 									 
 									t = checkBalance(r);
-									if(t != null && t == mR) {
-											if((t.right == null && t.left.right == null) 
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
-											else if((t.right == null && t.left.left == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t); 
-											else if((t.left == null && t.right.left == null) 
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
-											else if((t.left == null && t.right.right == null) 
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-											else System.out.println(" not in any rotation \n"); 
-																																
-											return mR.parent;
-									}
-
-									else if(t != null && t != mR) {
-											if((t.right == null && t.left.right == null) 
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
-											else if((t.right == null && t.left.left == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t); 
-											else if((t.left == null && t.right.left == null) 
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
-											else if((t.left == null && t.right.right == null) 
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-											else System.out.println(" not in any rotation \n");
-																																	
-											return mR;
-									}
-								
-									else return mR;
+									return rebalance(t, mR);
 						}
 						else return insertNode(r.left, mR, t, v);
 					}
@@ -237,6 +165,47 @@ class AVLTree {
 					}
 
 					else return checkBalance(r.parent);
+			}
+
+			public static Node rebalance(Node t, Node mR) {
+
+					if(t != null && t == mR) {
+									if((t.right == null && t.left.right == null) 
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
+									else if((t.right == null && t.left.left == null)
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t); 
+									else if((t.left == null && t.right.left == null) 
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
+									else if((t.left == null && t.right.right == null) 
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
+									else System.out.println(" not in any rotation \n"); 
+																																
+									return mR.parent;
+					}
+
+					else if(t != null && t != mR) {
+									if((t.right == null && t.left.right == null) 
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
+									else if((t.right == null && t.left.left == null)
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
+										|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t); 
+									else if((t.left == null && t.right.left == null) 
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
+									else if((t.left == null && t.right.right == null) 
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
+										|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
+									else System.out.println(" not in any rotation \n");
+																																	
+									return mR;
+					}
+							
+					else return mR;
 			}
 
 			public static void singleRotationLeft(Node r) {
