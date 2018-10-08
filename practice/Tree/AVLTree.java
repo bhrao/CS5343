@@ -120,8 +120,7 @@ class AVLTree {
 													else if((t.left == null && t.right.right == null) 
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-													else {	System.out.println(t.val+ " " + t.ht + " " + t.right.val + " "+ t.right.ht+ " " + t.left.val + " " + t.left.ht + " " + t.right.right.val + " " + t.right.right.ht + " " + t.right.left.val + " " + t.right.left.ht + " " + t.left.left.val + " " + t.left.left.ht + " " + t.left.right.val + " " + t.left.right.ht);
-														System.out.println("\nnot in any rotation \n "); preorderTraverse(t);}
+													else System.out.println(" not in any rotation \n");
 																									
 													return mR.parent;													
 											}
@@ -139,8 +138,7 @@ class AVLTree {
 													else if((t.left == null && t.right.right == null) 
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-													else {	System.out.println(t.val+ " " + t.ht + " " + t.right.val + " "+ t.right.ht+ " " + t.left.val + " " + t.left.ht + " " + t.right.right.val + " " + t.right.right.ht + " " + t.right.left.val + " " + t.right.left.ht + " " + t.left.left.val + " " + t.left.left.ht + " " + t.left.right.val + " " + t.left.right.ht);
-														System.out.println(" not in any rotation \n "); preorderTraverse(t);}
+													else System.out.println(" not in any rotation \n");
 																										
 													return mR; 
 											}
@@ -169,8 +167,7 @@ class AVLTree {
 											else if((t.left == null && t.right.right == null) 
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-											else {	System.out.println(t.val+ " " + t.ht + " " + t.right.val + " "+ t.right.ht+ " " + t.left.val + " " + t.left.ht + " " + t.right.right.val + " " + t.right.right.ht + " " + t.right.left.val + " " + t.right.left.ht + " " + t.left.left.val + " " + t.left.left.ht + " " + t.left.right.val + " " + t.left.right.ht);
-												System.out.println(" not in any rotation \n"); preorderTraverse(t);} 
+											else System.out.println(" not in any rotation \n"); 
 																																
 											return mR.parent;
 									}
@@ -188,8 +185,7 @@ class AVLTree {
 											else if((t.left == null && t.right.right == null) 
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
-											else {	System.out.println(t.val+ " " + t.ht + " " + t.right.val + " "+ t.right.ht+ " " + t.left.val + " " + t.left.ht + " " + t.right.right.val + " " + t.right.right.ht + " " + t.right.left.val + " " + t.right.left.ht + " " + t.left.left.val + " " + t.left.left.ht + " " + t.left.right.val + " " + t.left.right.ht);
-												System.out.println(" not in any rotation \n"); preorderTraverse(t);} 
+											else System.out.println(" not in any rotation \n");
 																																	
 											return mR;
 									}
