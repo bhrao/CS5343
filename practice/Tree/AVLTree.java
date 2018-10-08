@@ -110,13 +110,13 @@ class AVLTree {
 											if(t != null && t == mR) {
 													if((t.right == null && t.left.right == null) 
 														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht < t.left.left.ht)) singleRotationLeft(t);
+														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
 													else if((t.right == null && t.left.left == null)
 														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
 														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t);
 													else if((t.left == null && t.right.left == null) 
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht < t.right.right.ht)) singleRotationRight(t);
+														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
 													else if((t.left == null && t.right.right == null) 
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
@@ -128,13 +128,13 @@ class AVLTree {
 											else if(t != null && t != mR) {
 													if((t.right == null && t.left.right == null) 
 														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht < t.left.left.ht)) singleRotationLeft(t); 
+														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t); 
 													else if((t.right == null && t.left.left == null)
 														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
 														|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t);
 													else if((t.left == null && t.right.left == null) 
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht < t.right.right.ht)) singleRotationRight(t);
+														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
 													else if((t.left == null && t.right.right == null) 
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 														|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
@@ -157,13 +157,13 @@ class AVLTree {
 									if(t != null && t == mR) {
 											if((t.right == null && t.left.right == null) 
 												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht < t.left.left.ht)) singleRotationLeft(t);
+												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
 											else if((t.right == null && t.left.left == null)
 												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
 												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t); 
 											else if((t.left == null && t.right.left == null) 
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht < t.right.right.ht)) singleRotationRight(t);
+												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
 											else if((t.left == null && t.right.right == null) 
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
@@ -175,13 +175,13 @@ class AVLTree {
 									else if(t != null && t != mR) {
 											if((t.right == null && t.left.right == null) 
 												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right == null)
-												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht < t.left.left.ht)) singleRotationLeft(t);
+												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.right.ht <= t.left.left.ht)) singleRotationLeft(t);
 											else if((t.right == null && t.left.left == null)
 												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left == null)
 												|| (t.right != null && t.left != null && t.right.ht < t.left.ht && t.left.left.ht < t.left.right.ht)) doubleRotationLeft(t); 
 											else if((t.left == null && t.right.left == null) 
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left == null)
-												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht < t.right.right.ht)) singleRotationRight(t);
+												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.left.ht <= t.right.right.ht)) singleRotationRight(t);
 											else if((t.left == null && t.right.right == null) 
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right == null)
 												|| (t.left != null && t.right != null && t.left.ht < t.right.ht && t.right.right.ht < t.right.left.ht)) doubleRotationRight(t);
