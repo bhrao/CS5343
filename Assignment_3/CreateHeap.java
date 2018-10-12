@@ -18,7 +18,7 @@ class CreateHeap {
 				System.out.println("\nValues in the array before converting to heap :");
 				printArray(heapArray);
 
-				convertHeap(heapArray, (heapArray.length - 1)/2, 0);
+				convertToHeap(heapArray, (heapArray.length - 1)/2, 0);
 
 				System.out.println("\nValues in the array after converting to heap :");				
 				printArray(heapArray);
@@ -82,12 +82,12 @@ class CreateHeap {
 				}
 			}
 
-			public static void convertHeap(int[] h, int i, int j) {
+			public static void convertToHeap(int[] h, int i, int j) {
 
 				if(i == 0) System.out.println("");
 				else {
 
-					if(((2 * i) + 1 ) < h.length) { 
+					if(((2 * i) + 1 ) <= h[0]) { 
 
 						if(h[2*i] < h[(2*i) + 1] && h[2*i] < h[i]) { 
 
@@ -95,7 +95,7 @@ class CreateHeap {
 							h[2*i] = h[i]; 
 							h[i] = j; 
 							percolateDown(h, 2*i, 0);
-							convertHeap(h, --i, 0); 
+							convertToHeap(h, --i, 0); 
 						}
 
 						else if(h[(2*i) + 1] < h[2*i] && h[(2*i) + 1] < h[i]) { 
@@ -104,10 +104,10 @@ class CreateHeap {
 							h[(2*i) + 1] = h[i]; 
 							h[i] = j;
 							percolateDown(h, (2*i)+1, 0); 
-							convertHeap(h, --i, 0); 
+							convertToHeap(h, --i, 0); 
 						}
 
-						else convertHeap(h, --i, 0);
+						else convertToHeap(h, --i, 0);
 					}
 
 					else { 
@@ -117,11 +117,11 @@ class CreateHeap {
 							h[2*i] = h[i]; 
 							h[i] = j;
 							percolateDown(h, 2*i, 0); 
-							convertHeap(h, --i, 0); 
+							convertToHeap(h, --i, 0); 
 
 						}
 	
-						else convertHeap(h, --i, 0);						
+						else convertToHeap(h, --i, 0);						
 					}
 				}
 			}
@@ -165,26 +165,31 @@ class CreateHeap {
 
 			public static int[] increaseArray(int[] h) {
 	
-				int[] temp = new int[h.length + 1];
-				for(int i = 0; i < h.length; i++) {
+				if(h[0] == h.length - 1) {
+
+					int[] temp = new int[h.length + 1];
+					for(int i = 0; i < h.length; i++) {
 					
-					temp[i] = h[i];
+						temp[i] = h[i];
+					}
+
+					h = temp;
+					return h;
 				}
 				
-				h = temp;
-				return h;
+				else return h;				
 			}
 
 			public static void insertValue(int[] h, int v) {
 
-				h[h.length - 1] = v;
+				h[h[0]+1] = v;
 				h[0] = h[0] + 1;
-				percolateUp(h, h.length - 1, 0);
+				percolateUp(h, h[0], 0);
 			}
 
 			public static void percolateUp(int[] h, int i, int j) {
 
-				if(i == 1 || h[i] > h[i/2]) System.out.print("");
+				if(i == 1 || h[i] >= h[i/2]) System.out.print("");
 
 				else { j = h[i]; h[i] = h[i/2]; h[i/2] = j; percolateUp(h, i/2, 0); }				
 			}
@@ -192,18 +197,18 @@ class CreateHeap {
 			public static void deleteValue(int[] h, int v, int i) {				
 				
 				 
-				h[i] = h[h.length - 1]; h[0] = h[0] - 1; percolateDown(h, i, 0);
+				h[i] = h[h[0]]; h[0] = h[0] - 1; percolateDown(h, i, 0);
 			}
 
 			public static int searchArray(int[] A, int v) { 
 				
 				int i = 0;		
-				while(A[i] != v && i < A.length) {
+				while(A[i] != v && i <= A[0]) {
 
 					i++;
 				}
 
-				if(i < A.length) return i;
+				if(i <= A[0]) return i;
 				else return -1;						
 							
 			}
