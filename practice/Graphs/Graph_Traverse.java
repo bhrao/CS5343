@@ -32,7 +32,7 @@ class Graph_Traverse {
 
 		public static void main(String args[]) {
 
-			System.out.print("Enter the number of vertices in the graph : ");
+			System.out.print("\nEnter the number of vertices in the graph : ");
 			Scanner sc = new Scanner(System.in);
 			int v = sc.nextInt();
 
@@ -46,7 +46,7 @@ class Graph_Traverse {
 
 			System.out.println("");
 
-			System.out.print("BFS traverse : ");
+			System.out.print("\nBFS traverse : ");
 			boolean b[] = new boolean[v];
 			BFSprint(g, 0, b);
 		}		
